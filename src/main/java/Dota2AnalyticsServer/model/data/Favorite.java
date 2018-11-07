@@ -1,11 +1,6 @@
-package main.model.data;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import main.model.logic.TokenGenerator;
+package Dota2AnalyticsServer.model.data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "favorites")

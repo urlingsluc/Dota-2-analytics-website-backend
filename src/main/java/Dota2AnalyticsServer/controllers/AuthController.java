@@ -1,11 +1,11 @@
-package main.controllers;
+package Dota2AnalyticsServer.controllers;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import main.Exception.InvalidParametersException;
-import main.Exception.NotFoundException;
-import main.model.services.AuthService;
-import main.model.data.User;
+import Dota2AnalyticsServer.Exception.InvalidParametersException;
+import Dota2AnalyticsServer.Exception.NotFoundException;
+import Dota2AnalyticsServer.model.services.AuthService;
+import Dota2AnalyticsServer.model.data.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

@@ -1,7 +1,7 @@
-package main.model.data;
+package Dota2AnalyticsServer.model.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import main.model.logic.TokenGenerator;
+import Dota2AnalyticsServer.model.logic.TokenGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -26,6 +26,9 @@ public class User implements Serializable {
 
     @Column
     private String token;
+
+    @Column
+    private int steamId32;
 
     @OneToMany(fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
@@ -90,6 +93,14 @@ public class User implements Serializable {
 
     public Credentials getCredentials() {
         return credentials;
+    }
+
+    public long getSteamId32() {
+        return steamId32;
+    }
+
+    public void setSteamId32(int steamId32) {
+        this.steamId32 = steamId32;
     }
 
     public void setCredentials(Credentials credentials) {

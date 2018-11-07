@@ -1,4 +1,4 @@
-package main.model.logic;
+package Dota2AnalyticsServer.model.logic;
 
 import org.apache.commons.lang3.RandomStringUtils;
 

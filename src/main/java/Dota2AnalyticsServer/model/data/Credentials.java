@@ -1,7 +1,6 @@
-package main.model.data;
+package Dota2AnalyticsServer.model.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import main.model.data.User;
 
 import javax.persistence.*;
 import java.io.Serializable;

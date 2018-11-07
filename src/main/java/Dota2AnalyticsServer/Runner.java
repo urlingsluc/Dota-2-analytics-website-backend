@@ -1,4 +1,4 @@
-package main;
+package Dota2AnalyticsServer;
 
 
 import org.springframework.boot.SpringApplication;
