@@ -17,7 +17,13 @@ public class UserController {
     @Autowired
     private UserService UserService;
 
-    @PutMapping(path = "setsteamid", consumes = MediaType.APPLICATION_JSON_VALUE)
+    /**
+     *
+     * @param data
+     * @return
+     * @throws InvalidParametersException
+     */
+    @PostMapping(path = "setsteamid", consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody String setSteamid(@RequestBody String data) throws InvalidParametersException {
 
         long id = -1;
@@ -35,16 +41,14 @@ public class UserController {
         return "succes";
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @GetMapping(path = "getuser", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody User getUserById(@RequestParam Long id) {
-//        long id = -1;
-//
-//        try {
-//            JsonObject json = new JsonParser().parse(data).getAsJsonObject();
-//            id = json.get("id").getAsLong();
-//        } catch (Exception e) {
-//            throw new InvalidParametersException();
-//        }
         return UserService.getUserById(id);
     }
+
 }

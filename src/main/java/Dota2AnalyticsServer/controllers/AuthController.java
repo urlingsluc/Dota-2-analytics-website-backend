@@ -19,6 +19,12 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    /**
+     *
+     * @param data
+     * @return
+     * @throws InvalidParametersException
+     */
     @PostMapping(path = "insert", consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody String insertUser(@RequestBody String data) throws InvalidParametersException {
 
@@ -42,6 +48,13 @@ public class AuthController {
         return "succes";
     }
 
+    /**
+     *
+     * @param data
+     * @return
+     * @throws NotFoundException
+     * @throws InvalidParametersException
+     */
     @PostMapping(value = "login", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     User loginUser(@RequestBody String data) throws NotFoundException, InvalidParametersException {
@@ -63,6 +76,13 @@ public class AuthController {
         return user;
     }
 
+    /**
+     *
+     * @param data
+     * @return
+     * @throws NotFoundException
+     * @throws InvalidParametersException
+     */
     @PostMapping(value = "token", consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     String getToken(@RequestBody String data) throws NotFoundException, InvalidParametersException {

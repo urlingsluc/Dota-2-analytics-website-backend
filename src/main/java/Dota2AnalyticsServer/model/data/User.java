@@ -33,7 +33,13 @@ public class User implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
-    private List<Favorite> favorites;
+    private List<FavoriteGames> favoriteGames;
+
+
+    @OneToMany(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId")
+    private List<FavoritePlayers> favoritePlayers;
 
     @JsonIgnore
     @OneToOne(fetch = FetchType.EAGER,
@@ -83,12 +89,20 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public List<Favorite> getFavorites() {
-        return favorites;
+    public List<FavoriteGames> getFavoriteGames() {
+        return favoriteGames;
     }
 
-    public void setFavorites(List<Favorite> favorites) {
-        this.favorites = favorites;
+    public void setFavoriteGames(List<FavoriteGames> favoriteGames) {
+        this.favoriteGames = favoriteGames;
+    }
+
+    public List<FavoritePlayers> getFavoritePlayers() {
+        return favoritePlayers;
+    }
+
+    public void setFavoritePlayers(List<FavoritePlayers> favoritePlayers) {
+        this.favoritePlayers = favoritePlayers;
     }
 
     public Credentials getCredentials() {
