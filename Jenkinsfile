@@ -41,7 +41,7 @@ pipeline {
       steps {
         echo 'Deploying...'
         sh 'docker rm -f dota2analyticsapp-con || true'
-        sh 'docker run -d -p 9999:9999 --restart always --name dota2analyticsapp-con dota2analyticsapp'
+        sh 'docker run -d -p 12001:12001 --restart always --name dota2analyticsapp-con dota2analyticsapp'
         sh 'docker image prune -f'
       }
     }

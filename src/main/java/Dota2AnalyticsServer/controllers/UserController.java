@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import Dota2AnalyticsServer.model.data.User;
 
 @Controller
-@RequestMapping(value = "/user/")
+@RequestMapping(value = "/api/user/")
 public class UserController {
 
     @Autowired
