@@ -1,11 +1,13 @@
 package Dota2AnalyticsServer.controllers;
 
+import Dota2AnalyticsServer.model.dto.UserDTO;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import Dota2AnalyticsServer.Exception.InvalidParametersException;
 import Dota2AnalyticsServer.Exception.NotFoundException;
 import Dota2AnalyticsServer.model.services.AuthService;
 import Dota2AnalyticsServer.model.data.User;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ public class AuthController {
 
     @Autowired
     private AuthService authService;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     /**
      *
@@ -57,7 +62,7 @@ public class AuthController {
      */
     @PostMapping(value = "login", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    User loginUser(@RequestBody String data) throws NotFoundException, InvalidParametersException {
+    UserDTO loginUser(@RequestBody String data) throws NotFoundException, InvalidParametersException {
 
         String name = "";
         String pass = "";
@@ -73,7 +78,7 @@ public class AuthController {
         if (user == null) {
             throw new NotFoundException();
         }
-        return user;
+        return modelMapper.map(user, UserDTO.class);
     }
 
     /**
@@ -102,6 +107,4 @@ public class AuthController {
         }
         return "succes";
     }
-
-
 }

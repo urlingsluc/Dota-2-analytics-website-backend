@@ -1,6 +1,5 @@
 package Dota2AnalyticsServer.model.data;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import Dota2AnalyticsServer.model.logic.TokenGenerator;
 
 import javax.persistence.*;
@@ -30,31 +29,34 @@ public class User implements Serializable {
     @Column
     private int steamId32;
 
-    @OneToMany(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId")
-    private List<FavoriteGames> favoriteGames;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private List<FavoriteGame> favoriteGames;
 
 
-    @OneToMany(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId")
-    private List<FavoritePlayers> favoritePlayers;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private List<FavoritePlayer> favoritePlayers;
 
-    @JsonIgnore
     @OneToOne(fetch = FetchType.EAGER,
             cascade =  CascadeType.ALL,
             mappedBy = "user")
     private Credentials credentials;
 
-    public User(String name, String email) {
-        super();
-        this.name = name;
-        this.email = email;
-    }
+//    public User(String name, String email) {
+//        super();
+//        this.name = name;
+//        this.email = email;
+//    }
 
     public User() {
+    }
 
+    public User(Long id, String name, @Email String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        createToken();
     }
 
     public String getToken() {
@@ -89,19 +91,19 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public List<FavoriteGames> getFavoriteGames() {
+    public List<FavoriteGame> getFavoriteGames() {
         return favoriteGames;
     }
 
-    public void setFavoriteGames(List<FavoriteGames> favoriteGames) {
+    public void setFavoriteGames(List<FavoriteGame> favoriteGames) {
         this.favoriteGames = favoriteGames;
     }
 
-    public List<FavoritePlayers> getFavoritePlayers() {
+    public List<FavoritePlayer> getFavoritePlayers() {
         return favoritePlayers;
     }
 
-    public void setFavoritePlayers(List<FavoritePlayers> favoritePlayers) {
+    public void setFavoritePlayers(List<FavoritePlayer> favoritePlayers) {
         this.favoritePlayers = favoritePlayers;
     }
 
@@ -121,6 +123,9 @@ public class User implements Serializable {
         this.credentials = credentials;
     }
 
+    /**
+     *
+     */
     public void createToken() {
         token = TokenGenerator.createToken();
     }

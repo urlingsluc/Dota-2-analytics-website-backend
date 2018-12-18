@@ -1,14 +1,15 @@
 package Dota2AnalyticsServer.controllers;
 
 import Dota2AnalyticsServer.Exception.InvalidParametersException;
+import Dota2AnalyticsServer.model.dto.UserDTO;
 import Dota2AnalyticsServer.model.services.UserService;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import Dota2AnalyticsServer.model.data.User;
 
 @Controller
 @RequestMapping(value = "/api/user/")
@@ -16,6 +17,9 @@ public class UserController {
 
     @Autowired
     private UserService UserService;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     /**
      *
@@ -47,8 +51,7 @@ public class UserController {
      * @return
      */
     @GetMapping(path = "getuser", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody User getUserById(@RequestParam Long id) {
-        return UserService.getUserById(id);
+    public @ResponseBody UserDTO getUserById(@RequestParam Long id) {
+        return modelMapper.map(UserService.getUserById(id),UserDTO.class);
     }
-
 }

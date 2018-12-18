@@ -15,23 +15,27 @@ public class AuthService {
     public AuthService() {
     }
 
-    public void createUser(String name, String email, String username, String password){
-        User user = new User();
-        user.setId(0L);
-        user.setEmail(email);
-        user.setName(name);
-        user.createToken();
-
-        Credentials credentials = new Credentials();
-        credentials.setId(0L);
-        credentials.setUsername(username);
-        credentials.setPassword(password);
-
+    /**
+     *
+     * @param name
+     * @param email
+     * @param username
+     * @param password
+     */
+    public void createUser(String name, String email, String username, String password) {
+        User user = new User(0L, name, email);
+        Credentials credentials = new Credentials(0L, username, password);
         user.setCredentials(credentials);
         credentials.setUser(user);
         authRepository.save(user);
     }
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @return
+     */
     public User loginUser(String username, String password) {
         User user = authRepository.getUserByCredentials_UsernameAndCredentials_Password(username, password);
         if (user == null) return null;
@@ -40,6 +44,12 @@ public class AuthService {
         return user;
     }
 
+    /**
+     *
+     * @param id
+     * @param token
+     * @return
+     */
     public boolean checkToken(Long id, String token) {
         return authRepository.getUserByIdAndToken(id, token) == null;
     }

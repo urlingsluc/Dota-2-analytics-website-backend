@@ -10,6 +10,10 @@ public class TokenGenerator {
         //private for static class
     }
 
+    /**
+     *
+     * @return
+     */
     public static String createToken() {
         String token = RandomStringUtils.randomAlphanumeric(COUNT);
         return token;

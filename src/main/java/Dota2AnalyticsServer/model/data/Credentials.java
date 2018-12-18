@@ -29,6 +29,12 @@ public class Credentials implements Serializable {
 
     }
 
+    public Credentials(Long id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
+
     @Override
     public String toString(){
         return "Credentials{" +
