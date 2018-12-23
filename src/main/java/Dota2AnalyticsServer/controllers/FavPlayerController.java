@@ -31,7 +31,23 @@ public class FavPlayerController {
     @GetMapping(value = "getall", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     List<FavoriteDTO> getFavoritePlayers(@RequestParam Long id) {
-        return favPlayerService.getAllGames(id).stream().map(p -> modelMapper.map(p, FavoriteDTO.class)).collect(Collectors.toList());
+        return favPlayerService.getAllPlayers(id).stream().map(p -> modelMapper.map(p, FavoriteDTO.class)).collect(Collectors.toList());
+    }
+
+    @PostMapping(value = "isfavorite",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody boolean isFavorite(@RequestBody String data) throws InvalidParametersException {
+        long myId = -1;
+        int possibleFavPlayerID = -1;
+
+        try {
+            JsonObject json = new JsonParser().parse(data).getAsJsonObject();
+            System.out.println(json.toString());
+            myId = json.get("id").getAsLong();
+            possibleFavPlayerID = json.get("playerId").getAsInt();
+        } catch (Exception e) {
+            throw new InvalidParametersException();
+        }
+        return favPlayerService.isFavoritePlayerCheck(myId, possibleFavPlayerID);
     }
 
     /**
@@ -52,7 +68,7 @@ public class FavPlayerController {
         } catch (Exception e) {
             throw new InvalidParametersException();
         }
-        favPlayerService.updateFavoritePlayer(id,favPlayerId);
+        favPlayerService.updateFavoritePlayer(id, favPlayerId);
         return "succes";
     }
 }

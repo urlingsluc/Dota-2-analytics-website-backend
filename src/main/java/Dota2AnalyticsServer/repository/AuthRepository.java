@@ -22,5 +22,3 @@ public interface AuthRepository extends JpaRepository<User, Long> {
      */
     User getUserByIdAndToken(Long id, String token);
 }
-
-

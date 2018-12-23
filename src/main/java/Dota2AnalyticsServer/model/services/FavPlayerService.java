@@ -47,7 +47,11 @@ public class FavPlayerService {
      * @param playerId
      * @return
      */
-    public List<FavoritePlayer> getAllGames(Long playerId) {
+    public List<FavoritePlayer> getAllPlayers(Long playerId) {
         return favPlayerRepository.getAllByUser_Id(playerId);
+    }
+
+    public boolean isFavoritePlayerCheck(long myId, int possibleFavPlayerID) {
+        return favPlayerRepository.existsFavoritePlayerByUser_IdAndFavId(myId,possibleFavPlayerID);
     }
 }
