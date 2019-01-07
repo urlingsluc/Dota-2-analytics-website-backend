@@ -25,7 +25,7 @@ public class FavPlayerService {
      * @param playerId
      * @param favPlayerId
      */
-    public void updateFavoritePlayer(long playerId, int favPlayerId) {
+    public void updateFavoritePlayer(long playerId, long favPlayerId) {
         List<FavoritePlayer> favPlayers = favPlayerRepository.getAllByUser_Id(playerId);
         Long exists = Long.valueOf(-1);
         for (FavoritePlayer fp : favPlayers) {
@@ -51,7 +51,7 @@ public class FavPlayerService {
         return favPlayerRepository.getAllByUser_Id(playerId);
     }
 
-    public boolean isFavoritePlayerCheck(long myId, int possibleFavPlayerID) {
+    public boolean isFavoritePlayerCheck(long myId, long possibleFavPlayerID) {
         return favPlayerRepository.existsFavoritePlayerByUser_IdAndFavId(myId,possibleFavPlayerID);
     }
 }

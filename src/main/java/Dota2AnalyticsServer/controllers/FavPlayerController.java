@@ -37,13 +37,12 @@ public class FavPlayerController {
     @PostMapping(value = "isfavorite",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody boolean isFavorite(@RequestBody String data) throws InvalidParametersException {
         long myId = -1;
-        int possibleFavPlayerID = -1;
+        long possibleFavPlayerID = -1;
 
         try {
             JsonObject json = new JsonParser().parse(data).getAsJsonObject();
-            System.out.println(json.toString());
             myId = json.get("id").getAsLong();
-            possibleFavPlayerID = json.get("playerId").getAsInt();
+            possibleFavPlayerID = json.get("playerId").getAsLong();
         } catch (Exception e) {
             throw new InvalidParametersException();
         }
@@ -56,15 +55,15 @@ public class FavPlayerController {
      * @return
      * @throws InvalidParametersException
      */
-    @PostMapping(value = "updatePlayer", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "updateplayer", consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody String updatePlayer(@RequestBody String data) throws InvalidParametersException {
         long id = -1;
-        int favPlayerId = -1;
+        long favPlayerId = -1;
 
         try {
             JsonObject json = new JsonParser().parse(data).getAsJsonObject();
             id = json.get("id").getAsLong();
-            favPlayerId = json.get("playerId").getAsInt();
+            favPlayerId = json.get("playerId").getAsLong();
         } catch (Exception e) {
             throw new InvalidParametersException();
         }

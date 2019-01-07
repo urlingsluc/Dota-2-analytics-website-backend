@@ -14,4 +14,6 @@ public interface FavGameRepository extends JpaRepository<FavoriteGame, Long> {
      * @return
      */
     List<FavoriteGame> getAllByUser_Id(Long id);
+
+    boolean existsFavoriteGameByUser_IdAndFavId(long id, long FavId);
 }

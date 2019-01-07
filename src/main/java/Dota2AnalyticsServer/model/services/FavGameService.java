@@ -25,7 +25,7 @@ public class FavGameService {
      * @param playerId
      * @param gameId
      */
-    public void updateFavoriteGame(long playerId, int gameId) {
+    public void updateFavoriteGame(long playerId, long gameId) {
         List<FavoriteGame> favGames = favGameRepository.getAllByUser_Id(playerId);
         Long exists = Long.valueOf(-1);
         for (FavoriteGame fg : favGames) {
@@ -49,5 +49,9 @@ public class FavGameService {
      */
     public List<FavoriteGame> getAllGames(long playerId) {
         return favGameRepository.getAllByUser_Id(playerId);
+    }
+
+    public boolean isFavoriteGameCheck(long myId, long possibleFavGameID) {
+        return favGameRepository.existsFavoriteGameByUser_IdAndFavId(myId, possibleFavGameID);
     }
 }
