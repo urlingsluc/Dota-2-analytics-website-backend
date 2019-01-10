@@ -16,9 +16,4 @@ public class CorsConfiguration extends WebMvcConfigurerAdapter
         registry.addMapping("/**")
                 .allowedMethods("*").allowedOrigins("*");
     }
-
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
 }
