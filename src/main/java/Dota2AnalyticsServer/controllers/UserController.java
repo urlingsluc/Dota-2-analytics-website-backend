@@ -1,8 +1,8 @@
 package Dota2AnalyticsServer.controllers;
 
-import Dota2AnalyticsServer.Exception.InvalidParametersException;
+import Dota2AnalyticsServer.exception.InvalidParametersException;
 import Dota2AnalyticsServer.model.dto.UserDTO;
-import Dota2AnalyticsServer.model.services.UserService;
+import Dota2AnalyticsServer.services.UserService;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.modelmapper.ModelMapper;

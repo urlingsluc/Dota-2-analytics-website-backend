@@ -1,7 +1,7 @@
-package Dota2AnalyticsServer.model.services;
+package Dota2AnalyticsServer.services;
 
-import Dota2AnalyticsServer.model.data.Credentials;
-import Dota2AnalyticsServer.model.data.User;
+import Dota2AnalyticsServer.model.Credentials;
+import Dota2AnalyticsServer.model.User;
 import Dota2AnalyticsServer.repository.AuthRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

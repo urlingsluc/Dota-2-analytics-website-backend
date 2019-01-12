@@ -1,6 +1,6 @@
 package Dota2AnalyticsServer.repository;
 
-import Dota2AnalyticsServer.model.data.FavoriteGame;
+import Dota2AnalyticsServer.model.FavoriteGame;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package Dota2AnalyticsServer.model.data;
+package Dota2AnalyticsServer.model;
 
 import javax.persistence.*;
 

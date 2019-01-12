@@ -1,7 +1,7 @@
-package Dota2AnalyticsServer.model.services;
+package Dota2AnalyticsServer.services;
 
-import Dota2AnalyticsServer.model.data.FavoriteGame;
-import Dota2AnalyticsServer.model.data.User;
+import Dota2AnalyticsServer.model.FavoriteGame;
+import Dota2AnalyticsServer.model.User;
 import Dota2AnalyticsServer.repository.FavGameRepository;
 import Dota2AnalyticsServer.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

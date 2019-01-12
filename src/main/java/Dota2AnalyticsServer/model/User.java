@@ -1,11 +1,10 @@
-package Dota2AnalyticsServer.model.data;
-
-import Dota2AnalyticsServer.model.logic.TokenGenerator;
+package Dota2AnalyticsServer.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "users")
@@ -127,7 +126,7 @@ public class User implements Serializable {
      *
      */
     public void createToken() {
-        token = TokenGenerator.createToken();
+        token = UUID.randomUUID().toString();
     }
 
 

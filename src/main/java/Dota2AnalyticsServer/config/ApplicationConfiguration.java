@@ -1,4 +1,4 @@
-package Dota2AnalyticsServer;
+package Dota2AnalyticsServer.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
