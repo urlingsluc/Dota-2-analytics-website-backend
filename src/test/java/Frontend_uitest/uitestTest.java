@@ -57,13 +57,9 @@ public class uitestTest {
         String result;
         result = driver.findElement(By.xpath("/html/body/div[1]/div/div/div/div/div/div")).getText();
         System.out.println(result);
-        if(result.contains("successfully")) {
-            assertTrue(true);
-        }
-        else {
-            setupInCaseOfFail();
-            fail();
-        }
+
+        assertTrue(result.contains("successfully"));
+
 
     }
 
@@ -88,12 +84,9 @@ public class uitestTest {
         driver.findElement(By.xpath("/html/body/div[1]/div/div/div/div/div/form/button")).click();
         Thread.sleep(300);
         String result = driver.findElement(By.xpath("/html/body/div[1]/nav/div/div/ul/li[2]/div/a[1]")).getText();
-        if(result.contains("Your profile")) {
-            assertTrue(true);
-        }
-        else {
-            fail();
-        }
+
+        assertTrue(result.contains("Your profile"));
+
     }
 
     @After
