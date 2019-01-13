@@ -14,9 +14,9 @@ import static org.junit.Assert.*;
 
 public class uitestTest {
 
-    static WebDriver driver;
-    String username = "LucTestje";
-    String password = "LucTestje";
+    private static WebDriver driver;
+    private String username = "LucTestje";
+    private String password = "LucTestje";
 
     @BeforeClass
     public static void oneTimeSetup() {
