@@ -87,8 +87,8 @@ public class uitestTest {
         Thread.sleep(300);
         driver.findElement(By.xpath("/html/body/div[1]/div/div/div/div/div/form/button")).click();
         Thread.sleep(300);
-        String result = driver.findElement(By.xpath("/html/body/div[1]/div/h1")).getText();
-        if(result.contains("about")) {
+        String result = driver.findElement(By.xpath("/html/body/div[1]/nav/div/div/ul/li[2]/div/a[1]")).getText();
+        if(result.contains("Your profile")) {
             assertTrue(true);
         }
         else {

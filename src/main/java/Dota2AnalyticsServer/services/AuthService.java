@@ -3,6 +3,7 @@ package Dota2AnalyticsServer.services;
 import Dota2AnalyticsServer.model.Credentials;
 import Dota2AnalyticsServer.model.User;
 import Dota2AnalyticsServer.repository.AuthRepository;
+import Dota2AnalyticsServer.utilities.Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class AuthService {
      */
     public void createUser(String name, String email, String username, String password) {
         User user = new User(0L, name, email);
-        Credentials credentials = new Credentials(0L, username, password);
+        Credentials credentials = new Credentials(0L, username, Hash.getHash(password));
         user.setCredentials(credentials);
         credentials.setUser(user);
         authRepository.save(user);
@@ -37,7 +38,7 @@ public class AuthService {
      * @return
      */
     public User loginUser(String username, String password) {
-        User user = authRepository.getUserByCredentials_UsernameAndCredentials_Password(username, password);
+        User user = authRepository.getUserByCredentials_UsernameAndCredentials_Password(username, Hash.getHash(password));
         if (user == null) return null;
         user.createToken();
         authRepository.save(user);

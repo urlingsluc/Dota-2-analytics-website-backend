@@ -6,7 +6,6 @@ import Dota2AnalyticsServer.repository.FavGameRepository;
 import Dota2AnalyticsServer.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -51,6 +50,12 @@ public class FavGameService {
         return favGameRepository.getAllByUser_Id(playerId);
     }
 
+    /**
+     *
+     * @param myId
+     * @param possibleFavGameID
+     * @return
+     */
     public boolean isFavoriteGameCheck(long myId, long possibleFavGameID) {
         return favGameRepository.existsFavoriteGameByUser_IdAndFavId(myId, possibleFavGameID);
     }
